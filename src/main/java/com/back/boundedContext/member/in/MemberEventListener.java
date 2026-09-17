@@ -17,6 +17,7 @@ import static org.springframework.transaction.event.TransactionPhase.AFTER_COMMI
 public class MemberEventListener {
     private final MemberFacade memberFacade;
 
+    // 글 작성 점수 3점을 올린다.
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
     public void handle(PostCreatedEvent event) {
@@ -25,7 +26,7 @@ public class MemberEventListener {
         member.increaseActivityScore(3);
     }
 
-    // 댓글 이벤트 시 점수를 1점 올린다.
+    // 댓글 작성 시 점수 1점을 올린다.
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
     public void handle(PostCommentCreatedEvent event) {
