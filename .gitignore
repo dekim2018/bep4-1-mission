@@ -39,3 +39,6 @@ out/
 ### DB ###
 *.mv.db
 *.trace.db
+
+.env
+.env.default
