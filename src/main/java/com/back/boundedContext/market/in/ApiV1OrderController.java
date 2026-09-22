@@ -6,6 +6,7 @@ import com.back.global.exception.DomainException;
 import com.back.global.rsData.RsData;
 import com.back.shared.cash.out.CashApiClient;
 import com.back.shared.market.out.TossPaymentsService;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -36,6 +37,7 @@ public class ApiV1OrderController {
             methods = {RequestMethod.POST}
     )
     @PostMapping("/{id}/payment/confirm/by/tossPayments")
+    @Transactional
     public RsData<Void> confirmPaymentByTossPayments(
             @PathVariable int id,
             @Valid @RequestBody ConfirmPaymentByTossPaymentsReqBody reqBody
