@@ -24,6 +24,9 @@ spring:
         default_batch_fetch_size: 100
   config:
     import: optional:file:.env[.properties]
+  batch:
+    job:
+      enabled: false
 logging:
   level:
     com.back: DEBUG
